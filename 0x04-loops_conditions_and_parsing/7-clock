@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#clock
+main=0
+counter=0
+hour=0
+while [ $main -le 779 ]
+do
+    if [ $((main % 60)) -eq 0 -a $hour -le 12 ]
+    then
+        echo "Hour $hour"
+        counter=0
+        ((hour++))
+    else
+        echo $counter
+    fi
+    ((counter++))
+    ((main++))
+done
