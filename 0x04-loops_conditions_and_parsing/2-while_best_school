@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #print best schools 10 times
 
-var=1
+var=0
 while [ $var -lt 10 ]
 do
 	echo "Best School"
