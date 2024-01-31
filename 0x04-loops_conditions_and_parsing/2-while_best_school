@@ -5,6 +5,6 @@ var=0
 while [ $var -lt 10 ]
 do
 	echo "Best School"
-	var=`expr $var + 1`
+	((var++))
 done
 
