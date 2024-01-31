@@ -5,7 +5,7 @@ counter=0
 hour=0
 while [ $main -le 779 ]
 do
-    if [ $((main % 60)) -eq 0 -a $hour -le 12 ]
+    if [ $((main % 60)) -eq 0 ]
     then
         echo "Hour $hour"
         counter=0
