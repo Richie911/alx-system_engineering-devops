@@ -1,20 +1,8 @@
 #!/usr/bin/env bash
-
-# Function to handle SIGTERM signal
-terminate() {
-  echo "I am invincible!!!"
-  exit 0
-}
-
-trap terminate SIGTERM
-
-# Infinite loop with sleep 2 between iterations
+# highlander
 while true
 do
-    if [ "$?" -eq 143 ]; then
-        echo "Yes"
-    fi
   echo "To infinity and beyond"
   sleep 2
-  
+  trap 'echo "I am invincible!!!"' SIGTERM 
 done
