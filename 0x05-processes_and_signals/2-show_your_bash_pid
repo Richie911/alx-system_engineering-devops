@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#prints processes for bash
+
+ps -C bash
