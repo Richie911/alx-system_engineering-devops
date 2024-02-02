@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 # display all ipv4 addresses
-ip -4 addr show | grep inet | grep -v 127.0.0.1 | awk '{print $2}' | cut -d'/' -f1
+ifconfig | grep -Eo "inet (addr:)?([0-9]*\.){3}[0-9]*" | cut -b 11-
