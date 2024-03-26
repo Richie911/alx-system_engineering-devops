@@ -1,16 +1,25 @@
 #!/usr/bin/env bash
+echo -e "Updating and installing Nginx.\n"
+sudo apt-get update -y -qq && \
+	 sudo apt-get install nginx -y
 
-# Update package list
-sudo apt update
+echo -e "\nSetting up some minor stuff.\n"
 
-# Install nginx
-sudo apt install nginx -y
+# starting nginx service
+sudo service nginx start
 
-# Configure nginx to listen on port 80
-sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+# allowing nginx on firewall
+sudo ufw allow 'Nginx HTTP'
 
-# Restart nginx (without systemctl)
+# Give the user ownership to website files for easy editing
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+# Backup default index
+cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
+
+# Creating new index
+echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
+
+# Restarting nginx
 sudo service nginx restart
-
-# Create a simple HTML file with Hello World!
-echo "Hello World!" | sudo tee /var/www/html/index.html
