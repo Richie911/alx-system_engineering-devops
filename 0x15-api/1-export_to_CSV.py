@@ -9,12 +9,11 @@ if __name__ == "__main__":
     # Get the user ID from the command-line arguments provided to the script
     user_id = sys.argv[1]
     api_url= "https://jsonplaceholder.typicode.com/"
-
     # Define the base URL for the JSON API
-    user_response = requests.get(api_url + "users/{}".format(user_id)).json()
+    response = requests.get(api_url + "users/{}".format(user_id)).json()
 
     # Extract the username from the user data
-    username = user_response.get("username")
+    username = response.get("username")
 
     todos = requests.get(api_url + "todos", params={"userId": user_id}).json()
 

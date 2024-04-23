@@ -13,8 +13,8 @@ import sys
 
 if __name__ == "__main__":
     employee_id = int(sys.argv[1])
-    api_url= "https://jsonplaceholder.typicode.com/"
-    user_response = requests.get(api_url + "users/{}".format(employee_id)).json()
+    api_url="https://jsonplaceholder.typicode.com/"
+    response = requests.get(api_url + "users/{}".format(employee_id)).json()
 
     parameter = {"userId": employee_id}
     todos = requests.get(api_url + "todos", parameter).json()
@@ -23,6 +23,6 @@ if __name__ == "__main__":
                        if tasks.get("completed") is True]
 
     print("Employee {} is done with tasks({}/{}):".format(
-        user_response.get("name"), len(completed_tasks), len(todos)))
+        response.get("name"), len(completed_tasks), len(todos)))
 
     [print("\t {}".format(complete)) for complete in completed_tasks]
