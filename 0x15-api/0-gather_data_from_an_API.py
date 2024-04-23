@@ -13,7 +13,7 @@ import sys
 
 if __name__ == "__main__":
     employee_id = int(sys.argv[1])
-    api_url="https://jsonplaceholder.typicode.com/"
+    api_url = "https://jsonplaceholder.typicode.com/"
     response = requests.get(api_url + "users/{}".format(employee_id)).json()
 
     parameter = {"userId": employee_id}
