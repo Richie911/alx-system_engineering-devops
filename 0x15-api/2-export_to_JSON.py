@@ -7,13 +7,13 @@ import sys
 
 if __name__ == "__main__":
     user_id = sys.argv[1]
-
-    user = requests.get("https://jsonplaceholder.typicode.com/" + "users/{}".format(user_id)).json()
+    api_url= "https://jsonplaceholder.typicode.com/"
+    user = requests.get(api_url + "users/{}".format(user_id)).json()
 
     # Extract the username from the user data
     username = user.get("username")
 
-    todos = requests.get("https://jsonplaceholder.typicode.com/" + "todos", params={"userId": user_id}).json()
+    todos = requests.get(api_url + "todos", params={"userId": user_id}).json()
 
     tasks_json = {user_id: [{"task": task.get("title"),
                              "completed": task.get("completed"),

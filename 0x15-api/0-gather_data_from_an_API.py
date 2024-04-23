@@ -13,10 +13,11 @@ import sys
 
 if __name__ == "__main__":
     employee_id = int(sys.argv[1])
-    user_response = requests.get("https://jsonplaceholder.typicode.com/" + "users/{}".format(employee_id)).json()
+    api_url= "https://jsonplaceholder.typicode.com/"
+    user_response = requests.get(api_url + "users/{}".format(employee_id)).json()
 
     parameter = {"userId": employee_id}
-    todos = requests.get("https://jsonplaceholder.typicode.com/" + "todos", parameter).json()
+    todos = requests.get(api_url + "todos", parameter).json()
 
     completed_tasks = [tasks.get("title") for tasks in todos
                        if tasks.get("completed") is True]
